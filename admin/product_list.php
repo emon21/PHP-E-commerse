@@ -70,7 +70,8 @@ require_once('inc_file/sidebar.php');
 
                   require_once('connect.php');
 
-                  $sql ="SELECT * FROM products Order by ID desc";
+                //   $sql ="SELECT * FROM products Order by ID desc";
+                $sql = "SELECT catagory.catagory_name,products.product_name,products.product_desc,products.product_price,products.product_img,products.id FROM products,catagory WHERE products.cat_id=catagory.id";
                   $result = mysqli_query($links,$sql);
                   $count = 1;
                   if (mysqli_num_rows($result) > 0) {
@@ -80,7 +81,7 @@ require_once('inc_file/sidebar.php');
 
                   <tr>
                     <td><?php echo $count; $count++; ?></td>
-                    <td><?php echo $row['cat_id']; ?></td>
+                    <td><?php echo $row['catagory_name']; ?></td>
                     <td><?php echo $row['product_name']; ?></td>
                      <td><?php echo $row['product_price']; ?></td>
                      <td>
@@ -91,7 +92,7 @@ require_once('inc_file/sidebar.php');
                        <a href="product_edit.php?product_edit=<?php echo $row['id'] ?>" class="btn btn-success">
                         <i class="fa fa-pen-square"></i>
                       </a>
-                      
+
                       <a href="product_delete.php?cat_delete=<?php echo $row['id'] ?>" class="btn btn-danger" onclick=" return confirm('Are You Sure,You Want TO Delete This Items Y/N ?')">
                         <i class="fa fa-trash"></i>
                       </a>
@@ -116,11 +117,12 @@ require_once('inc_file/sidebar.php');
                   
                   </tbody>
                   <tfoot>
-                   <tr>
+                  <tr>
                     <th>#sl</th>
                     <th>Category</th>
                     <th>Product Name</th>
                     <th>Product Price</th>
+                    <th>Product Picture</th>
                     <th>Action</th>
                   </tr>
                   </tfoot>

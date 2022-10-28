@@ -24,7 +24,7 @@ require_once('connect.php');
 	//move_uploaded_file($icon_image_tmp,"img_icon/$icon_image");
 
 
-	$insert_user = "Update products SET
+	$insert_user = "Update products SET cat_id='$cat_list',
     product_name='$pro_name',product_desc='$pro_desc',product_price='$pro_price' WHERE id='$edid_ID'";
 
 	$run_user = mysqli_query($links,$insert_user);
