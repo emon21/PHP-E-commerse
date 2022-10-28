@@ -121,6 +121,14 @@
               <p>Informational</p>
             </a>
           </li>
+
+
+           <li class="nav-item">
+            <a href="index.php" target="_blank" class="nav-link">
+              <i class="nav-icon fa fa-globe text-info"></i>
+              <p>Website</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

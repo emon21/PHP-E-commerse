@@ -128,7 +128,7 @@
       </li> -->
 
 
-       <li class="dropdown user user-menu mt-3">
+       <li class="dropdown user user-menu mt-2">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">Alexander Pierce</span>
@@ -144,10 +144,24 @@
                 </p>
               </li>
               <!-- Menu Body -->
+              <!-- <li class="user-body">
+                <div class="flex-col">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+              /.row 
+              </li> -->
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="float-left">
-                  <a href="profile.php" class="btn btn-outline-primary btn-flat">Profile</a>
+                  <a href="user_profile.php" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="float-right">
                   <a href="logout.php" class="btn btn-outline-danger btn-flat">Sign out</a>

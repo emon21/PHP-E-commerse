@@ -2,7 +2,16 @@
 require_once('inc_file/header.php');
 
 session_start();
-$userid = $_SESSION['user_id'];
+$user_id = $_SESSION['user_id'];
+
+require_once('connect.php');
+
+$selectInfo = "SELECT * FROM admin WHERE id=$user_id";
+$runInfo = mysqli_query($links,$selectInfo);           
+$row = mysqli_fetch_array($runInfo);
+
+
+
 ?>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -20,17 +29,18 @@ require_once('inc_file/sidebar.php');
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+   
+   <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Starter Page</h1>
+            <h1 class="m-0">Product</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
+              <li class="breadcrumb-item active">Product</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -49,8 +59,8 @@ require_once('inc_file/sidebar.php');
 
             <div class="card card-primary card-outline">
               <div class="card-header ">
-                <h5 class="m-0 float-left pt-2">Create Category</h5>
-                <a href="category_list.php" class="float-right btn btn-outline-success">Category List</a>
+                <h5 class="m-0 float-left pt-2">User Profile</h5>
+                <a href="category_list.php" class="float-right btn btn-outline-success">User Profile</a>
               </div>
               <div class="card-body">
                 <div class="col-md-12">
@@ -62,35 +72,25 @@ require_once('inc_file/sidebar.php');
               <!-- /.card-header -->
               <!-- form start -->
 
-              <?php 
            
-              include 'connect.php';
-         
-                $selectInfo = "SELECT * FROM admin WHERE id=$userid";
-                $runInfo = mysqli_query($links,$selectInfo);           
-                $row = mysqli_fetch_assoc($runInfo);
-             
-              ?>
+              <form action="user_profile_change.php" method="post" enctype=" multipart/form-data">
 
-              <form action="profile_change.php" method="post">
-              <input type="hidden" name="profile_id" value="<?php echo $userid;?>">
+              	 <input type="hidden" name="profile_id"
+              	  value="<?php echo $user_id;?>">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="catagory_name">User Name</label>
-                    <input type="text" class="form-control" id="catagory_name" name="user_name" placeholder="Enter User Name..." value="<?php echo $row['user_name']?>">
+                    <label for="pro_name">Profile Name</label>
+                    <input type="text" class="form-control" id="pro_name" name="user_name" placeholder="Enter Profile Name..."  value="<?php echo $row['user_name']?>">
                   </div>
+
                  
                </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="edit_Data">Update Profile</button>
+                  <button type="submit" class="btn btn-primary" name="update_profile">Update Profile</button>
                 </div>
               </form>
-
-
-             
-
             </div>
             <!-- /.card -->
 

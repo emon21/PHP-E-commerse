@@ -80,7 +80,7 @@ require_once('inc_file/sidebar.php');
                     <td><?php echo $row['catagory_name']; ?></td>
                     <td>
                       <a href="category_edit.php?cat_edit=<?php echo $row['id'] ?>" class="btn btn-success">Edit</a>
-                      <a href="category_delete.php?cat_delete=<?php echo $row['id'] ?>" class="btn btn-danger">Delete</a>
+                      <a href="category_delete.php?cat_delete=<?php echo $row['slug'] ?>" class="btn btn-danger">Delete</a>
                     </td>
                   </tr>
 

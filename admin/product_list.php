@@ -60,6 +60,7 @@ require_once('inc_file/sidebar.php');
                     <th>Category</th>
                     <th>Product Name</th>
                     <th>Product Price</th>
+                    <th>Product Picture</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -69,7 +70,7 @@ require_once('inc_file/sidebar.php');
 
                   require_once('connect.php');
 
-                  $sql ="SELECT * FROM products";
+                  $sql ="SELECT * FROM products Order by ID desc";
                   $result = mysqli_query($links,$sql);
                   $count = 1;
                   if (mysqli_num_rows($result) > 0) {
@@ -82,12 +83,16 @@ require_once('inc_file/sidebar.php');
                     <td><?php echo $row['cat_id']; ?></td>
                     <td><?php echo $row['product_name']; ?></td>
                      <td><?php echo $row['product_price']; ?></td>
+                     <td>
+                       <img src="products/<?php echo $row['product_img'] ?>" alt="" width="120" height="80">
+                     </td>
                     <td>
-                      
-                       <a href="category_edit.php?cat_edit=<?php echo $row['id'] ?>" class="btn btn-success">
+
+                       <a href="product_edit.php?product_edit=<?php echo $row['id'] ?>" class="btn btn-success">
                         <i class="fa fa-pen-square"></i>
                       </a>
-                      <a href="category_delete.php?cat_delete=<?php echo $row['id'] ?>" class="btn btn-danger" onclick=" return confirm('Are You Sure,You Want TO Delete This Items Y/N ?')">
+                      
+                      <a href="product_delete.php?cat_delete=<?php echo $row['id'] ?>" class="btn btn-danger" onclick=" return confirm('Are You Sure,You Want TO Delete This Items Y/N ?')">
                         <i class="fa fa-trash"></i>
                       </a>
                     </td>
@@ -99,7 +104,7 @@ require_once('inc_file/sidebar.php');
                 else{?>
 
                    <tr>
-                     <td colspan="3">
+                     <td colspan="6">
                       <div class="alert text-danger text-center">
   <strong class="text-primary">Warning!</strong> No Data Found.
 </div>

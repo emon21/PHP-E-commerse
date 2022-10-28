@@ -16,18 +16,18 @@ if(isset($_POST['login'])){
           
         if($count === 1){ 
 
-        	$_SESSION['user_email'] = $row['user_email'];
+        	$_SESSION['user_email'] = $row['user_name'];
         	$_SESSION['user_id'] = $row['id'];
-
-            // $_SESSION['user_email']=$user_email;
-           // $_SESSION['user_id']=$user_info['id'];
-            //$_SESSION['name']=$user_info['user_name'];
-           // $_SESSION['mob_no']=$user_info['mob_no'];
            // echo "<h1><center> Login successful </center></h1>";
             header('location:home.php');  
         }  
         else{  
             echo "<h1> Login failed. Invalid username or password.</h1>";  
+
+            echo "<script>
+    window.alert('Succesfully Updated');
+    window.location.href='index.php';
+    </script>User Updated Has Been Succefully...!";
         }
 }
 

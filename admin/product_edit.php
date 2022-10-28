@@ -1,5 +1,19 @@
 <?php 
 require_once('inc_file/header.php');
+
+require_once('connect.php');
+
+
+if (isset($_GET['product_edit'])) {
+    $product_edit =  $_GET['product_edit'];
+
+    $sql ="SELECT * FROM products WHERE id ='$product_edit'";
+    $result = mysqli_query($links,$sql);
+  //  $res = mysqli_num_rows($result);
+
+    $getData = mysqli_fetch_assoc($result);
+    //echo $getData['id'];
+}
 ?>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -59,8 +73,9 @@ require_once('inc_file/sidebar.php');
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="product_process.php" method="post"
+              <form action="product_edit_process.php" method="post"
               enctype="multipart/form-data">
+              <input type="hidden" name="edit_id" id="" value="<?php echo $getData['id']?>">
                 <div class="card-body">
 
                   <div class="form-group">
@@ -87,17 +102,17 @@ require_once('inc_file/sidebar.php');
                   </div>
                   <div class="form-group">
                     <label for="pro_name">Product Name</label>
-                    <input type="text" class="form-control" id="pro_name" name="pro_name" placeholder="Enter Category Name...">
+                    <input type="text" class="form-control" id="pro_name" name="pro_name" placeholder="Enter Category Name..." value="<?php echo $getData['product_name']?>">
                   </div>
 
                   <div class="form-group">
                   <label for="comment">Product Description:</label>
-                  <textarea class="form-control" rows="5" id="comment" name="pro_desc"></textarea>
+                  <textarea class="form-control" rows="5" id="comment" name="pro_desc"><?php echo $getData['product_desc']?></textarea>
                 </div>
 
                    <div class="form-group">
                     <label for="pro_price">Product Price</label>
-                    <input type="text" class="form-control" id="pro_price" name="pro_price" placeholder="Enter Category Name...">
+                    <input type="text" class="form-control" id="pro_price" name="pro_price" placeholder="Enter Category Name..." value="<?php echo $getData['product_price']?>">
                   </div>
                    <div class="form-group">
                     <label for="pro_price">Product Picture</label>
@@ -108,7 +123,7 @@ require_once('inc_file/sidebar.php');
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="add_data">Create Product</button>
+                  <button type="submit" class="btn btn-primary" name="update">Update Product</button>
                 </div>
               </form>
             </div>

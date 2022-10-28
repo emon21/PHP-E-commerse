@@ -1,28 +1,21 @@
-
 <?php
 
-include 'connect.php';
+require_once('connect.php');
 
 
-	if(isset($_REQUEST['edit_Data'])){
+	if(isset($_REQUEST['update_profile'])){
 	
 	$edid_ID = $_REQUEST['profile_id'];
 	
-	
+	$user_name = $_POST['user_name'];
+
 	//image insert into db
 			
-			 
-	//$icon_image = $_FILES['icon_image']['name'];
-	//$icon_image_tmp = $_FILES['icon_image']['tmp_name'];
-	//,pro_img='$icon_image'
 
-	$user_name = $_POST['user_name'];
-	
 
-	
 	//move_uploaded_file($image_tmp,"./images/$post_image");
 
-	//move_uploaded_file($icon_image_tmp,"img/$icon_image");
+	
 			
 	$insert_user = "UPDATE admin SET user_name='$user_name' WHERE id='$edid_ID'";
 	$run_user = mysqli_query($links,$insert_user);
@@ -49,7 +42,7 @@ include 'connect.php';
 		
 		echo "<script>
     window.alert('Succesfully Updated');
-    window.location.href='profile.php';
+    window.location.href='user_profile.php';
     </script>User Updated Has Been Succefully...!";
 		
 		//echo "<a href='login.php'>Login</a>";
